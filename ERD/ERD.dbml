@@ -1,0 +1,104 @@
+Table Tournament {
+  TournamentID int [pk]
+  TournamentName varchar
+  StartDate date
+  EndDate date
+  Season varchar(100)
+}
+
+Table Country {
+  CountryID int [pk]
+  CountryName varchar
+  Continent varchar(100)
+}
+
+Table Team {
+  TeamID int [pk]
+  TeamName varchar(100)
+  CountryID int
+}
+
+Ref: Team.CountryID > Country.CountryID
+
+Table Coach {
+  CoachID int [pk]
+  CoachName varchar(100)
+  TeamID int [unique]
+}
+
+Ref: Coach.TeamID > Team.TeamID
+
+
+Table Player {
+    PlayerID int [pk]
+    PlayerName varchar(100)
+    Age int
+    Position varchar(50)
+    TshirtNo tinyint
+    TeamID int
+}
+
+Ref: Player.TeamID > Team.TeamID
+
+Table Stadium {
+  StadiumID int [pk]
+  StadiumName varchar(100)
+  City varchar
+  Capacity int
+}
+
+
+Table Match {
+    MatchID int [pk]
+    MatchDate date
+    HomeGoals int
+    AwayGoals int
+    HomeTeamID int
+    AwayTeamID int
+    StadiumID int
+    TournamentID int
+}
+
+Ref: Match.HomeTeamID > Team.TeamID
+Ref: Match.AwayTeamID > Team.TeamID
+
+Ref: Match.StadiumID > Stadium.StadiumID
+
+Ref: Match.TournamentID > Tournament.TournamentID
+
+
+Table TournamentTeam{
+    TournamentID int [pk]
+    TeamID int [pk]
+}
+
+Ref: TournamentTeam.TournamentID > Tournament.TournamentID
+Ref: TournamentTeam.TeamID > Team.TeamID
+
+Table Referee {
+    RefereeID int [pk]
+    RefereeName varchar(100)
+    Nationality varchar(100)
+}
+
+Table MatchReferee{
+    MatchID int [pk]
+    RefereeID int [pk]
+    Role varchar(50)
+}
+
+Ref: MatchReferee.MatchID > Match.MatchID
+Ref: MatchReferee.RefereeID > Referee.RefereeID
+
+
+Table PlayerMatchStatistics{
+    PlayerID int [pk]
+    MatchID int [pk]
+    Goals int
+    Assists int
+    YellowCards int
+    RedCards int
+}
+
+Ref: PlayerMatchStatistics.PlayerID > Player.PlayerID
+Ref: PlayerMatchStatistics.MatchID > Match.MatchID
