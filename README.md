@@ -1,10 +1,13 @@
-Football-Management-System-Database
+# Football Tournament Management System
 
-Discription:
-A SQL server database project for managing football tournment (EX:FIFA WORLD CUP) , teams , players , matches , refrees and stadiums
+# Description:
+A SQL Server database project for managing football tournament (e.g., FIFA World Cup), teams, players, matches, refrees and stadiums
 
-Technologies:
-- SQL SERVER MANGMENT STUDIO
+# Technologies:
+- SQL SERVER MANGMENT STUDIO (SSMS)
 - T SQL
 - GIT
 - GITHUP
+
+# ERD 
+![ERD](Docs/ERD.png)

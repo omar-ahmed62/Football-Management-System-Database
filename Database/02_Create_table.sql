@@ -4,7 +4,7 @@ GO
 CREATE TABLE Country
 (
     CountryID INT PRIMARY KEY,
-    CountryName VARCHAR(50) NOT NULL,
+    CountryName VARCHAR(50) NOT NULL unique,
     Continent VARCHAR(50) NOT NULL
 )
 
@@ -16,14 +16,15 @@ CREATE TABLE Tournament
     StartDate DATE NOT NULL,
     EndDate DATE NOT NULL,
     Season VARCHAR(100) NOT NULL,
-    CHECK (EndDate >= StartDate)
+    CHECK (EndDate >= StartDate),
+    UNIQUE (TournamentName, Season)
 )
 
 
 CREATE TABLE Stadium
 (
     StadiumID INT PRIMARY KEY,
-    StadiumName VARCHAR(100) NOT NULL,
+    StadiumName VARCHAR(100) NOT NULL unique,
     City VARCHAR(100) NOT NULL,
     Capacity INT NOT NULL,
     CHECK (Capacity >= 0)
@@ -36,17 +37,19 @@ CREATE TABLE Referee
     CountryID INT NOT NULL,
     FOREIGN KEY (CountryID)
     REFERENCES Country(CountryID)
+    ON UPDATE CASCADE
 
 )
 
 CREATE TABLE Team
 (
     TeamID INT PRIMARY KEY,
-    TeamName VARCHAR(100) NOT NULL, 
+    TeamName VARCHAR(100) NOT NULL unique, 
     CountryID INT NOT NULL,
     FIFARanking INT NOT NULL,
     FOREIGN KEY (CountryID)
-    REFERENCES Country(CountryID),
+    REFERENCES Country(CountryID)
+    ON UPDATE CASCADE,
     CHECK (FIFARanking > 0)
 )
 
@@ -84,6 +87,8 @@ CREATE TABLE Match
     AwayTeamID INT NOT NULL,
     StadiumID INT NOT NULL,
     TournamentID INT NOT NULL,
+
+    UNIQUE ( TournamentID,HomeTeamID,AwayTeamID,MatchDate),
 
     FOREIGN KEY (HomeTeamID)
     REFERENCES Team(TeamID),
@@ -133,7 +138,8 @@ CREATE TABLE MatchReferee
 
     FOREIGN KEY (RefereeID)
     REFERENCES Referee(RefereeID),
-    CHECK (Role IN ('Main_Referee', 'Assistant_1', 'Assistant_2', 'Fourth_Official'))
+    CHECK (Role IN ('Main_Referee', 'Assistant_1', 'Assistant_2', 'Fourth_Official')),
+    UNIQUE (MatchID,Role)
 )
 
 CREATE TABLE PlayerMatchStatistics
