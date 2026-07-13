@@ -33,7 +33,10 @@ CREATE TABLE Referee
 (
     RefereeID INT PRIMARY KEY,
     RefereeName VARCHAR(50) NOT NULL,
-    RefereeNationality VARCHAR(50) NOT NULL
+    CountryID INT NOT NULL,
+    FOREIGN KEY (CountryID)
+    REFERENCES Country(CountryID)
+
 )
 
 CREATE TABLE Team
@@ -41,8 +44,10 @@ CREATE TABLE Team
     TeamID INT PRIMARY KEY,
     TeamName VARCHAR(100) NOT NULL, 
     CountryID INT NOT NULL,
+    FIFARanking INT NOT NULL,
     FOREIGN KEY (CountryID)
-    REFERENCES Country(CountryID) 
+    REFERENCES Country(CountryID),
+    CHECK (FIFARanking > 0)
 )
 
 CREATE TABLE Coach
@@ -58,21 +63,20 @@ CREATE TABLE Player
 (
     PlayerID INT PRIMARY KEY,
     PlayerName VARCHAR(100) NOT NULL,
-    Age INT NOT NULL,
+    BirthDate DATE NOT NULL,
     Position VARCHAR(50) NOT NULL,
     TshirtNo TINYINT NOT NULL,
     TeamID INT NOT NULL,
     FOREIGN KEY(TeamID)
     REFERENCES Team(TeamID),
-    CHECK (AGE BETWEEN 15 AND 50),
     UNIQUE (TeamID, TshirtNo)
-
 )
 
 
 CREATE TABLE Match
 (
     MatchID INT PRIMARY KEY,
+    MatchStage VARCHAR(20) NOT NULL,
     HomeGoals TINYINT NOT NULL,
     AwayGoals TINYINT NOT NULL,
     MatchDate DATE NOT NULL,
@@ -93,10 +97,14 @@ CREATE TABLE Match
     FOREIGN KEY(TournamentID)
     REFERENCES Tournament(TournamentID),
 
+    CHECK (MatchStage IN ( 'Group Stage','Round of 16',
+    'Quarter Final','Semi Final','Third Place','Final')),
+
     CHECK (HomeGoals >= 0),
     CHECK (AwayGoals >= 0),
     CHECK (HomeTeamID <> AwayTeamID) -- NOT EQUAL 
-);
+)
+
 
 CREATE TABLE TournamentTeam
 (
@@ -125,17 +133,18 @@ CREATE TABLE MatchReferee
 
     FOREIGN KEY (RefereeID)
     REFERENCES Referee(RefereeID),
-    CHECK (Role IN ('Main_Referee', 'Assistant_1', 'Assistant_2', 'Fourth line_man'))
+    CHECK (Role IN ('Main_Referee', 'Assistant_1', 'Assistant_2', 'Fourth_Official'))
 )
 
 CREATE TABLE PlayerMatchStatistics
 (
     PlayerID INT,
     MatchID INT,
-    Goals TINYINT NOT NULL,
-    Assists TINYINT NOT NULL,
-    Y_Cards TINYINT NOT NULL,
-    R_Cards TINYINT NOT NULL,
+    MinutesPlayed TINYINT DEFAULT 0,
+    Goals TINYINT DEFAULT 0,
+    Assists TINYINT DEFAULT 0,
+    Y_Cards TINYINT DEFAULT 0,
+    R_Cards TINYINT DEFAULT 0,
 
     PRIMARY KEY (PlayerID, MatchID),
 
@@ -145,10 +154,9 @@ CREATE TABLE PlayerMatchStatistics
     FOREIGN KEY (MatchID)
     REFERENCES Match(MatchID),
 
+    CHECK (MinutesPlayed BETWEEN 0 AND 120),
     CHECK (Goals >= 0),
     CHECK (Assists >= 0),
     CHECK (Y_Cards BETWEEN 0 AND 2),
     CHECK (R_Cards BETWEEN 0 AND 1)
 )
-
-KK

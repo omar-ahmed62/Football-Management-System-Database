@@ -10,6 +10,3 @@ FIFA decided to store data and information about its tournaments in a database a
 - Each match is played in one stadium each stadium has StadiumID, StadiumName, City, Capacity
 - MatchReferee has Match_ID, Referee_ID, Role
 - Each player has PlayerMatchStatistics each one has PlayerID, MatchID, Goals, Assists, Y_Cards, R_Cards
-
-
-lihds
