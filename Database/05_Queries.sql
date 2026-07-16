@@ -36,7 +36,7 @@ WHERE MatchStage='Final'
 SELECT P.PlayerName, T.TeamName
 FROM Player P INNER JOIN Team T
 ON P.TeamID = T.TeamID
-WHERE T.TeamID = 1;
+WHERE T.TeamID = 1
 
 
 -- Aggregate FUNCTIONS
@@ -54,7 +54,7 @@ FROM Match
 
 SELECT Position,COUNT(*) as' Number of players in this possition'
 FROM Player
-GROUP BY Position;
+GROUP BY Position
 
 
 SELECT TOP 1 TeamName AS 'least rank'
@@ -65,7 +65,7 @@ ORDER BY FIFARanking desc
 SELECT Position, COUNT(*) AS TotalPlayers
 FROM Player
 GROUP BY Position
-HAVING COUNT(*) > 5;
+HAVING COUNT(*) > 5
 
 SELECT TOP 2 with ties P.PlayerName AS 'World Cup Top Scorer', SUM(PMS.Goals) AS 'TotalGoals'
 FROM Player P JOIN PlayerMatchStatistics PMS
