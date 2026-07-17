@@ -1,0 +1,17 @@
+CREATE NONCLUSTERED INDEX Player_Name
+ON Player(PlayerName)
+
+CREATE NONCLUSTERED INDEX Player_Stats
+ON PlayerMatchStatistics(PlayerID)
+
+CREATE NONCLUSTERED INDEX Team_Name
+ON Team(TeamName)
+
+CREATE NONCLUSTERED INDEX FIFA_Ranking
+ON Team(FIFARanking) 
+
+CREATE NONCLUSTERED INDEX Match_Stadium
+ON Match(StadiumID) 
+
+CREATE NONCLUSTERED INDEX IX_MatchDate
+ON Match(MatchDate)
