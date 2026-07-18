@@ -166,3 +166,13 @@ CREATE TABLE PlayerMatchStatistics
     CHECK (Y_Cards BETWEEN 0 AND 2),
     CHECK (R_Cards BETWEEN 0 AND 1)
 )
+
+
+
+CREATE TABLE TransferHistory
+(
+    ChangeDate DATETIME,
+    PlayerID INT,
+    OldTeamID INT,
+    NewTeamID INT
+)
