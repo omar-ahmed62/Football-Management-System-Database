@@ -3,51 +3,71 @@
 # Description:
 A SQL Server database project for managing football tournament (e.g., FIFA World Cup), teams, players, matches, referees and stadiums
 
+# SQL Concepts Used
+This project demonstrates practical database design concepts including normalization, relationships, constraints, Joins, Aggregate Functions, GROUP BY, HAVING, Subqueries, views, functions, stored procedures, triggers, and indexing.
+
+
 # Technologies:
-- SQL SERVER MANGMENT STUDIO (SSMS)
+- SQL Server Management Studio (SSMS)
 - T SQL
 - GIT
 - GITHUP
 
 # ERD 
-![ERD](Docs/ERD.png)
+![ERD](ERD/ERD.png)
 
 ## Features
-- Countries
-- Teams
-- Players
-- Coaches
-- Stadiums
-- Referees
-- Matches
-- Match Statistics
+- Database Design using SQL Server
+- Relational Database with Foreign Keys
+- Constraints & Data Validation
+- Views
+- Scalar Functions
+- Table-Valued Functions
+- Stored Procedures
+- Triggers
+- Indexes
+- Database Documentation
+- Entity Relationship Diagram (ERD)
+
+# 📂 Project Structure
+
+Football-Management-System-Database
+│
+├── Database
+│   ├── 01_Create_Database.sql
+│   ├── 02_Create_Table.sql
+│   ├── 03_Drop_Tables.sql
+│   ├── 04_Insert_Data.sql
+│   ├── 05_Queries.sql
+│   ├── 06_Functions.sql
+│   ├── 07_Index.sql
+│   ├── 08_View.sql
+│   ├── 09_Stored_Procedure.sql
+│   └── 10_Triggers.sql
+│
+├── Docs
+│   ├── Entities.md
+│   └── System_Analysis.md
+│
+├── ERD
+│   ├── ERD.dbml
+│   └── ERD.png
+│
+├── Screenshots
+│
+└── README.md
 
 
-## Tables
-
+# 🗄 Database Entities
 - Country
-- Tournament
-- Stadium
 - Team
 - Coach
-- Referee
 - Player
+- Tournament
 - TournamentTeam
+- Stadium
 - Match
+- Referee
 - MatchReferee
 - PlayerMatchStatistics
-
-## SQL Concepts Used
-
-- PK
-- FK
-- CHECK
-- UNIQUE
-- INNER JOIN
-- Aggregate Functions
-- GROUP BY
-- HAVING
-- EXISTS
-- Subqueries
-- ROW_NUMBER()
-- PARTITION BY
+- TransferHistory
