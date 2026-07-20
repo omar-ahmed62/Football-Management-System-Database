@@ -1,20 +1,16 @@
-# Football Tournament Management System
+# Football Tournament Management System Database
 
-# Description:
-A SQL Server database project for managing football tournament (e.g., FIFA World Cup), teams, players, matches, referees and stadiums
+## Description
+A SQL Server database project for managing football tournaments (e.g., FIFA World Cup), teams, players, matches, referees, stadiums, and player statistics.
 
-# SQL Concepts Used
+## SQL Concepts Used
 This project demonstrates practical database design concepts including normalization, relationships, constraints, Joins, Aggregate Functions, GROUP BY, HAVING, Subqueries, views, functions, stored procedures, triggers, and indexing.
 
-
-# Technologies:
+## Technologies
 - SQL Server Management Studio (SSMS)
-- T SQL
-- GIT
-- GITHUP
-
-# ERD 
-![ERD](ERD/ERD.png)
+- T-SQL
+- Git
+- GitHub
 
 ## Features
 - Database Design using SQL Server
@@ -27,10 +23,13 @@ This project demonstrates practical database design concepts including normaliza
 - Triggers
 - Indexes
 - Database Documentation
+- Sample Queries
+- Audit Logging using Triggers
 - Entity Relationship Diagram (ERD)
 
-# 📂 Project Structure
+## 📂 Project Structure
 
+```text
 Football-Management-System-Database
 │
 ├── Database
@@ -54,11 +53,14 @@ Football-Management-System-Database
 │   └── ERD.png
 │
 ├── Screenshots
+│   ├── 01_Table_Diagram.jpeg
+│   ├── 02_Queries.jpeg
+│   ├── 03_Stored_Procedure.jpeg
+│   └── 04_Trigger.jpeg
 │
 └── README.md
-
-
-# 🗄 Database Entities
+```
+## Database Entities
 - Country
 - Team
 - Coach
@@ -71,3 +73,31 @@ Football-Management-System-Database
 - MatchReferee
 - PlayerMatchStatistics
 - TransferHistory
+
+## 📸 Screenshots
+## Entity Relationship Diagram
+![ERD](ERD/ERD.png)
+
+## Database Diagram
+![Database Diagram](Screenshots/01_Table_Diagram.jpeg)
+
+## Sample Queries
+![Queries](Screenshots/02_Queries.jpeg)
+
+## Stored Procedures
+![StoredProcedure](Screenshots/03_Stored_Procedure.jpeg)
+
+## Triggers
+![Trigger](Screenshots/04_Trigger.jpeg)
+
+## Author
+
+**Omar Ahmed**
+
+Faculty of Engineering
+
+GitHub:
+[omar-ahmed62](https://github.com/omar-ahmed62)
+
+LinkedIn:
+[Omar Ahmed Salah](https://www.linkedin.com/in/omarahmedsalah)
